@@ -31,9 +31,11 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 echo "Building Docker image"
+                dir('hello-api-phase1') {
                 bat "docker build -t %IMAGE_NAME% ."
                 // macOS/Linux:
                 // sh "docker build -t ${IMAGE_NAME} ."
+                }
             }
         }
 
@@ -49,9 +51,11 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 echo "Deploying application to Kubernetes"
+                dir('hello-api-phase1') {
                 bat "kubectl apply -f k8s/"
                 // macOS/Linux:
                 // sh "kubectl apply -f k8s/"
+                }
             }
         }
 
