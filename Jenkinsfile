@@ -19,9 +19,12 @@ pipeline {
         stage('Build Application') {
             steps {
                 echo "Building application"
-                bat 'mvn clean package -DskipTests'
-                // macOS/Linux:
-                // sh 'mvn clean package -DskipTests'
+                dir('hello-api-phase1') {
+                    bat 'mvn clean package -DskipTests'
+                    // macOS/Linux:
+                    // sh 'mvn clean package -DskipTests'
+                }
+
             }
         }
 
