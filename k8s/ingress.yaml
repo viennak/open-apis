@@ -3,15 +3,14 @@ kind: Ingress
 metadata:
   name: hello-api-ingress
 spec:
-  ingressClassName: nginx
   rules:
-  - host: hello.local
-    http:
-      paths:
-      - path: /hello
-        pathType: Prefix
-        backend:
-          service:
-            name: hello-api-service
-            port:
-              number: 80
+    - host: hello.local
+      http:
+        paths:
+          - path: /hello
+            pathType: Prefix
+            backend:
+              service:
+                name: hello-api
+                port:
+                  number: 80
